@@ -184,55 +184,61 @@ p {
 
 .search-form {
     display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
+    align-items: center;
     justify-content: center;
-    align-items: stretch;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 1.5rem;
-    border-radius: 12px;
-    backdrop-filter: blur(10px);
+    max-width: 500px;
+    margin: 0 auto;
+    position: relative;
 }
 
 .search-input {
-    flex: 2;
-    min-width: 200px;
-    padding: 0.75rem 1rem;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
+    width: 100%;
+    padding: 1rem 3rem 1rem 1rem;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
     font-size: 1rem;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.95);
     color: #1E1E1E;
     transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .search-input:focus {
     outline: none;
     border-color: #14B8A6;
-    box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.2);
+    box-shadow: 0 4px 25px rgba(20, 184, 166, 0.2);
 }
 
 .search-input::placeholder {
     color: #64748b;
 }
 
-.search-select {
-    flex: 1;
-    min-width: 150px;
-    padding: 0.75rem 1rem;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
-    font-size: 1rem;
-    background-color: rgba(255, 255, 255, 0.9);
-    color: #1E1E1E;
+.search-btn {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #14B8A6;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
-.search-select:focus {
-    outline: none;
-    border-color: #14B8A6;
-    box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.2);
+.search-btn:hover {
+    background: #0D9488;
+    transform: translateY(-50%) scale(1.05);
+}
+
+.search-btn svg {
+    width: 18px;
+    height: 18px;
 }
 
 /* FEATURES SECTION */

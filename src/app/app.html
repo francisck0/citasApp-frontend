@@ -2,7 +2,7 @@
 <header class="header">
     <nav class="container">
         <div class="nav">
-            <a href="#" class="logo">CitasApp</a>
+            <a href="#" class="logo">Logo</a>
             <ul class="nav-links">
                 <li><a href="#servicios" (click)="scrollToSection('servicios', $event)">Servicios</a></li>
                 <li><a href="#como-funciona" (click)="scrollToSection('como-funciona', $event)">Cómo funciona</a></li>
@@ -16,49 +16,28 @@
 <!-- HERO SECTION -->
 <section class="hero">
     <div class="container">
-        <h1>Reserva tu cita en segundos</h1>
+        <h1>Reserva una cita</h1>
         <p>Encuentra y reserva citas con los mejores profesionales y negocios cerca de ti. Rápido, fácil y sin complicaciones.</p>
-        
+
         <!-- SEARCH SECTION -->
         <div class="search-container">
             <div class="search-form">
-                <input 
-                    type="text" 
-                    placeholder="Buscar especialista o servicio..."
+                <input
+                    type="text"
+                    placeholder="Buscar negocios para reservar cita..."
                     class="search-input"
                     [value]="searchQuery()"
                     (input)="onSearch($event)"
                 >
-                <select 
-                    class="search-select"
-                    [value]="selectedSpecialty()"
-                    (change)="onSpecialtySelect($event)"
-                >
-                    <option value="">Especialidad</option>
-                    @for (specialty of specialties(); track specialty) {
-                        <option [value]="specialty">{{ specialty }}</option>
-                    }
-                </select>
-                <select 
-                    class="search-select"
-                    [value]="selectedLocation()"
-                    (change)="onLocationSelect($event)"
-                >
-                    <option value="">Ciudad</option>
-                    @for (city of cities(); track city) {
-                        <option [value]="city">{{ city }}</option>
-                    }
-                </select>
-                <button class="btn btn-success btn-large" (click)="onSearchSubmit()">
-                    Buscar cita
+                <button class="search-btn" (click)="onSearchSubmit()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
                 </button>
             </div>
         </div>
-        
-        <div class="hero-buttons">
-            <a href="#" class="btn btn-success btn-large">Reservar cita ahora</a>
-            <a href="#" class="btn btn-secondary btn-large">Ver especialidades</a>
-        </div>
+
     </div>
 </section>
 
@@ -67,20 +46,20 @@
     <div class="container">
         <h2 style="text-align: center; margin-bottom: 1rem;">¿Por qué elegir CitasApp?</h2>
         <p style="text-align: center; max-width: 600px; margin: 0 auto;">Ofrecemos la forma más moderna y conveniente de gestionar tus citas con profesionales</p>
-        
+
         <div class="features-grid">
             <div class="feature-card">
                 <div class="feature-icon">📅</div>
                 <h3>Reserva instantánea</h3>
                 <p>Reserva tu cita las 24 horas del día, los 7 días de la semana. Sin llamadas, sin esperas.</p>
             </div>
-            
+
             <div class="feature-card">
                 <div class="feature-icon">👨‍💼</div>
                 <h3>Profesionales verificados</h3>
                 <p>Todos nuestros profesionales están certificados y cuentan con años de experiencia comprobada.</p>
             </div>
-            
+
             <div class="feature-card">
                 <div class="feature-icon">📱</div>
                 <h3>Recordatorios automáticos</h3>
@@ -95,20 +74,20 @@
     <div class="container">
         <h2 style="text-align: center; margin-bottom: 1rem;">Cómo funciona</h2>
         <p style="text-align: center; max-width: 600px; margin: 0 auto;">En solo 3 pasos tendrás tu cita confirmada</p>
-        
+
         <div class="steps">
             <div class="step">
                 <div class="step-number">1</div>
                 <h3>Busca tu especialista</h3>
                 <p>Encuentra profesionales por especialidad, ubicación o nombre. Ve disponibilidad en tiempo real.</p>
             </div>
-            
+
             <div class="step">
                 <div class="step-number">2</div>
                 <h3>Selecciona fecha y hora</h3>
                 <p>Elige el horario que mejor te convenga de los disponibles del profesional.</p>
             </div>
-            
+
             <div class="step">
                 <div class="step-number">3</div>
                 <h3>Confirma tu cita</h3>
@@ -138,7 +117,7 @@
                 <h4>CitasApp</h4>
                 <p style="color: rgba(255, 255, 255, 0.8);">La plataforma líder en reserva de citas online.</p>
             </div>
-            
+
             <div class="footer-section">
                 <h4>Servicios</h4>
                 <a href="#">Reserva de citas</a>
@@ -146,7 +125,7 @@
                 <a href="#">Profesionales</a>
                 <a href="#">Historial de citas</a>
             </div>
-            
+
             <div class="footer-section">
                 <h4>Soporte</h4>
                 <a href="#">Centro de ayuda</a>
@@ -154,7 +133,7 @@
                 <a href="#">Políticas</a>
                 <a href="#">Términos de uso</a>
             </div>
-            
+
             <div class="footer-section">
                 <h4>Contacto</h4>
                 <a href="tel:+34900123456">📞 900 123 456</a>
@@ -162,7 +141,7 @@
                 <a href="#">📍 Madrid, España</a>
             </div>
         </div>
-        
+
         <div class="footer-bottom">
             <p>&copy; 2025 CitasApp. Todos los derechos reservados.</p>
         </div>
