@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable, BehaviorSubject, throwError, timer } from 'rxjs';
-import { map, catchError, tap, switchMap } from 'rxjs/operators';
+import { map, catchError, tap, switchMap, finalize } from 'rxjs/operators';
+import { LoadingService } from './loading.service';
+import { ErrorHandlerService } from './error-handler.service';
 import {
   LoginRequestDTO,
   LoginResponseDTO,
@@ -41,7 +43,9 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private loadingService: LoadingService,
+    private errorHandler: ErrorHandlerService
   ) {
     // Iniciar auto-refresh del token si hay uno válido
     if (this.isAuthenticated()) {
@@ -379,5 +383,50 @@ export class AuthService {
       console.error('Error al decodificar token:', error);
       return null;
     }
+  }
+
+  // Métodos para reset de password
+  requestPasswordReset(email: string): Observable<any> {
+    const loadingId = 'auth-forgot-password';
+    this.loadingService.startLoading(loadingId, 'Enviando correo de restablecimiento...');
+
+    return this.http.post(`${this.API_URL}/forgot-password`, { email })
+      .pipe(
+        finalize(() => this.loadingService.stopLoading(loadingId)),
+        catchError(error => {
+          console.error('Error al solicitar reset de password:', error);
+          return this.errorHandler.createErrorObservable(error, 'Solicitud de reset de password');
+        })
+      );
+  }
+
+  resetPassword(token: string, newPassword: string): Observable<any> {
+    const loadingId = 'auth-reset-password';
+    this.loadingService.startLoading(loadingId, 'Restableciendo contraseña...');
+
+    return this.http.post(`${this.API_URL}/reset-password`, {
+      token,
+      newPassword
+    }).pipe(
+      finalize(() => this.loadingService.stopLoading(loadingId)),
+      catchError(error => {
+        console.error('Error al resetear password:', error);
+        return this.errorHandler.createErrorObservable(error, 'Reset de password');
+      })
+    );
+  }
+
+  validateResetToken(token: string): Observable<any> {
+    const loadingId = 'auth-validate-token';
+    this.loadingService.startLoading(loadingId, 'Validando enlace...');
+
+    return this.http.get(`${this.API_URL}/validate-reset-token/${token}`)
+      .pipe(
+        finalize(() => this.loadingService.stopLoading(loadingId)),
+        catchError(error => {
+          console.error('Error al validar token de reset:', error);
+          return this.errorHandler.createErrorObservable(error, 'Validación de token');
+        })
+      );
   }
 }

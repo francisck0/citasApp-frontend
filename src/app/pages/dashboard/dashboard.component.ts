@@ -224,7 +224,7 @@ import { CitaEstadisticasDTO } from '../../interfaces/cita-dtos.interface';
                   <div class="calificacion" *ngIf="negocio.calificacion">
                     <mat-icon class="star-icon">star</mat-icon>
                     <span>{{ negocio.calificacionFormateada }}</span>
-                    <span class="reseñas">({{ negocio.totalReseñas }})</span>
+                    <span class="resenias">({{ negocio['totalReseñas'] }})</span>
                   </div>
                 </div>
                 <div class="favorito-actions">

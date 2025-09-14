@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthService, LoginRequest, AuthError } from '../../services/auth.service';
@@ -42,7 +42,7 @@ export function passwordValidator(control: AbstractControl): {[key: string]: any
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, RouterModule],
   template: `
     <div class="login-container">
       <div class="login-card">
@@ -588,7 +588,6 @@ export class LoginComponent implements OnInit {
   }
 
   onForgotPassword() {
-    // Aquí se implementaría la recuperación de contraseña
-    alert('Funcionalidad de recuperación de contraseña en desarrollo.');
+    this.router.navigate(['/forgot-password']);
   }
 }

@@ -131,6 +131,10 @@ export interface ServicioDTO {
   precio?: number;
   activo: boolean;
   categoriaId: number;
+  modalidad?: 'PRESENCIAL' | 'VIRTUAL' | 'HIBRIDA';
+  destacado?: boolean;
+  requierePreparacion?: boolean;
+  admiteUrgencias?: boolean;
 }
 
 export interface FotoDTO {

@@ -15,10 +15,10 @@ import {
   CitaFiltrosDTO,
   EstadoCita,
   TipoServicio,
-  ModalidadConsulta,
   CitaEstadisticasDTO,
   DisponibilidadDTO
 } from '../interfaces/cita-dtos.interface';
+import { ModalidadConsulta } from '../interfaces/profesional-dtos.interface';
 import { Cita } from '../models/cita.model';
 
 export interface CancelacionCitaDTO {

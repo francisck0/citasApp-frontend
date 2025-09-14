@@ -19,6 +19,7 @@ export class Usuario {
   ultimoAcceso?: Date;
   emailVerificado: boolean;
   perfilCompleto: boolean;
+  foto?: string;
 
   // Información adicional
   preferencias?: string;
@@ -40,6 +41,7 @@ export class Usuario {
     this.fechaRegistro = new Date(data.fechaRegistro);
     this.emailVerificado = data.emailVerificado;
     this.perfilCompleto = data.perfilCompleto;
+    this.foto = (data as any).foto;
 
     // Propiedades específicas de UsuarioResponseDTO
     if ('estado' in data) {
@@ -113,6 +115,15 @@ export class Usuario {
       case 'FEMENINO': return 'Femenino';
       case 'OTRO': return 'Otro';
       default: return 'No especificado';
+    }
+  }
+
+  get estadoDisplay(): string {
+    switch (this.estado) {
+      case 'ACTIVO': return 'Activo';
+      case 'INACTIVO': return 'Inactivo';
+      case 'SUSPENDIDO': return 'Suspendido';
+      default: return 'Desconocido';
     }
   }
 
